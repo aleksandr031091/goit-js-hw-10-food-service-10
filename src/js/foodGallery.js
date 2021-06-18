@@ -34,10 +34,6 @@ function replaceTeam(newTheme, oldTheme) {
   localStorage.setItem('theme', newTheme);
 }
 
-const localStorageTheme = localStorage.getItem('theme', Theme.LIGHT);
-if (localStorageTheme === Theme.DARK) {
-  refs.switch.checked = true;
-  document.body.classList.add(Theme.DARK);
-} else {
-  document.body.classList.add(Theme.LIGHT);
-}
+const localStorageTheme = localStorage.getItem('theme') || Theme.LIGHT;
+refs.switch.checked = localStorageTheme === Theme.DARK;
+document.body.classList.add(localStorageTheme);
